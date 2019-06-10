@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjectApp.Models
 {
-    public class Car
+    public class Customer
     {
         public int Id { get; set; }
         public string Name { get; set; }

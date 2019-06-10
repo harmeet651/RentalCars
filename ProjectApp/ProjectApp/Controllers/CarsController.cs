@@ -1,4 +1,5 @@
 ﻿using ProjectApp.Models;
+using ProjectApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,16 @@ namespace ProjectApp.Controllers
         // GET: Cars
         public ActionResult Random()
         {
-            var car = new Car() { name = "Audi" };
-            return View(car);
+            var car = new Car() { Name = "Audi" };
+            var customers = new Customer() { Name = "Customer 1"};
+            var viewModel = new RandomCarViewModel
+            {
+                Car = car,
+                //Customers = customers
+            };
+            return View(viewModel);
         }
+        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
@@ -32,4 +40,4 @@ namespace ProjectApp.Controllers
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
     }
-}
+}     

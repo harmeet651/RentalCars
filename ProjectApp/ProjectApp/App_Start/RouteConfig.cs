@@ -12,10 +12,11 @@ namespace ProjectApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute("CarsByModelYear", "cars/released/{year}/{month}", 
-                new {Controller = "Cars", action = "ByReleaseDate"}, new { year = @"\d{4}", month = @"\d{2}" });
+            //routes.MapRoute("CarsByModelYear", "cars/released/{year}/{month}", 
+            //    new {Controller = "Cars", action = "ByReleaseDate"}, new { year = @"\d{4}", month = @"\d{2}" });
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-                name: "Default",
+                name: "Default", 
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
