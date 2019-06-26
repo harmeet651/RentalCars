@@ -10,5 +10,6 @@ namespace ProjectApp.ViewModels
     {
         public Car Car { get; set; }
         public Customer Customers { get; set; }
+        public List<Customer> List { get; set; }
     }
 }
