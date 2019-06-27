@@ -13,17 +13,14 @@ namespace ProjectApp.Controllers
         // GET: Cars
         public ActionResult Random()
         {
-            var car = new Car() { Name = "Audi" };
-            var customers = new List<Customer>
+            var cars = new List<Car>
             {
-                new Customer {Name = "Customer 1"},
-                new Customer {Name = "Customer 2"}
+                new Car { Name = "Audi" },
+                new Car {Name = "BMW"}
             };
-            //var customers = new Customer() { Name = "Customer 1"};
             var viewModel = new RandomCarViewModel
             {
-                Car = car,
-                List = customers
+                ListCars = cars
             };
             return View(viewModel);
         }

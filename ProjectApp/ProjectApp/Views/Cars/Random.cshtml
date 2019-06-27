@@ -4,24 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{ 
-    var className = Model.List.Count>5 ? "popular" : null;
-}
-
-<!-- className added only if class is not null -->
-<h2 class="@className">@Model.Car.Name</h2>
-
-@if(Model.List.Count==0)
+@if (Model.ListCars.Count == 0)
 {
     <p>No one has rented this car.</p>
 }
 else
 {
     <ul>
-        @foreach (var customer in Model.List)
+        @foreach (var car in Model.ListCars)
         {
             <li>
-                @customer.Name
+                @car.Name
             </li>
         }
     </ul>

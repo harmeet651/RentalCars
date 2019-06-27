@@ -9,7 +9,8 @@ namespace ProjectApp.ViewModels
     public class RandomCarViewModel
     {
         public Car Car { get; set; }
+        public List<Car> ListCars { get; set; }
         public Customer Customers { get; set; }
-        public List<Customer> List { get; set; }
+        public List<Customer> ListCustomers { get; set; }
     }
 }
