@@ -174,7 +174,7 @@
     <Content Include="Views\Cars\Random.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Loginpartial.cshtml" />
-    <Content Include="Views\Customers\CustomersView.cshtml" />
+    <Content Include="Views\Customers\Random.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

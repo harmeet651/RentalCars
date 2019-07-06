@@ -14,7 +14,6 @@ namespace ProjectApp
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             //routes.MapRoute("CarsByModelYear", "cars/released/{year}/{month}", 
             //    new {Controller = "Cars", action = "ByReleaseDate"}, new { year = @"\d{4}", month = @"\d{2}" });
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
                 name: "Default", 
                 url: "{controller}/{action}/{id}",

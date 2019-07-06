@@ -1,14 +1,6 @@
-﻿
+﻿@model ProjectApp.ViewModels.RandomCarViewModel
 @{
-    ViewBag.Title = "CustomersView";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>CustomersView</h2>
-
-@model ProjectApp.ViewModels.RandomCarViewModel
-@{
-    ViewBag.Title = "CustomersView";
+    ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,7 +9,7 @@
 }
 
 <!-- className added only if class is not null -->
-<h2 class="@className">@Model.Customers.Name</h2>
+<h2 class="@className">@Model.Customers</h2>
 
 @if (Model.ListCustomers.Count == 0)
 {

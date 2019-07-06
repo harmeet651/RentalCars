@@ -4,6 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    var className = Model.ListCars.Count > 5 ? "popular" : null;
+}
+
+<!-- className added only if class is not null -->
+<h2 class="@className">@Model.Car</h2>
+
+
 @if (Model.ListCars.Count == 0)
 {
     <p>No one has rented this car.</p>
