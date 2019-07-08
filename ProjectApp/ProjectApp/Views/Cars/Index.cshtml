@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ProjectApp.Models.Car>
+@{
+    ViewBag.Title = "Cars";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cars</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any cars yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Cars List</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model) 
+            {
+                <tr>
+                    <td>@car.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

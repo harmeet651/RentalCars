@@ -11,6 +11,11 @@ namespace ProjectApp.Controllers
     public class CarsController : Controller
     {
         // GET: Cars
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            var cars = GetCars();
+            return View(cars);
+        }
         public ActionResult Random()
         {
             var cars = new List<Car>
@@ -24,6 +29,14 @@ namespace ProjectApp.Controllers
             };
             return View(viewModel);
         }
+        private IEnumerable<Car> GetCars()
+        {
+            return new List<Car>
+                {
+                new Car {Id = 1, Name = "Audi" },
+                new Car {Id =2, Name = "BMW"}
+            };
+        }
         [Route("cars/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
@@ -32,14 +45,6 @@ namespace ProjectApp.Controllers
         public ActionResult Edit(int id)
         {
             return Content("id= " + id);
-        }
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-            if (String.IsNullOrWhiteSpace(sortBy))
-                sortBy = "Name";
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
     }
 }     
