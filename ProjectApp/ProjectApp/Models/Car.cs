@@ -11,8 +11,4 @@ namespace ProjectApp.Models
         public int Id { get; set; }
         public string Name { get; set; }
     }
-    class CarContext : DbContext
-    {
-        public DbSet<Car> customer { get; set; }
-    }
 }

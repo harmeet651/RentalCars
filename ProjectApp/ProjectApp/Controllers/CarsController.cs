@@ -17,30 +17,24 @@ namespace ProjectApp.Controllers
         public ActionResult Index(int? pageIndex, string sortBy)
         {
             string connectionString = "Data Source=52.189.181.41 ;Initial Catalog=Sample; User ID=sa;Password=Lb@zxc)0";
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                //SqlCommand cmd = new SqlCommand("select * from CustomerCar", con);
-                //con.Open();
-                SqlConnection objConn = new SqlConnection(connectionString);
-                objConn.Open();
-                SqlDataAdapter daAuthors = new SqlDataAdapter("Select * From CustomerCar", objConn);
-                DataSet dsPubs = new DataSet("Pubs");
-                daAuthors.FillSchema(dsPubs, SchemaType.Source, "Authors");
-                daAuthors.Fill(dsPubs, "Authors");
-
-                DataTable tblAuthors;
-                tblAuthors = dsPubs.Tables["Authors"];
-
-                //foreach (DataRow drCurrent in tblAuthors.Rows)
-                //{
-                //    Console.WriteLine("{0} {1}",
-                //    drCurrent["au_fname"].ToString(),
-                //    drCurrent["au_lname"].ToString());
-                //}
-                Console.ReadLine();
+                SqlCommand cmd = new SqlCommand("ShowCars", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                da.Fill(ds, "Cars");
+                dt = ds.Tables["Cars"];
+                var car = "";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    car = dr["Name"].ToString();
+                }
+                //var cars = GetCars();
+                return View(car);
             }
-            var cars = GetCars();
-            return View(cars);
         }
         public ActionResult Random()
         {
