@@ -27,15 +27,26 @@ namespace ProjectApp.Controllers
                 da.SelectCommand = cmd;
                 da.Fill(ds, "Cars");
                 dt = ds.Tables["Cars"];
-                var car = "";
+                List<Car> listCar = new List<Car>(); ;
+
                 foreach (DataRow dr in dt.Rows)
                 {
-                    car = dr["Name"].ToString();
+                    listCar.Add(new Car { Id = (int)dr["Id"], Name = dr["Name"].ToString() });
                 }
                 //var cars = GetCars();
-                return View(car);
+                return View(listCar);
             }
         }
+
+        private IEnumerable<Car> GetCars()
+        {
+            return new List<Car>
+                {
+                new Car {Id = 1, Name = "Audi" },
+                new Car {Id =2, Name = "BMW"}
+            };
+        }
+
         public ActionResult Random()
         {
             var cars = new List<Car>
@@ -49,14 +60,7 @@ namespace ProjectApp.Controllers
             };
             return View(viewModel);
         }
-        private IEnumerable<Car> GetCars()
-        {
-            return new List<Car>
-                {
-                new Car {Id = 1, Name = "Audi" },
-                new Car {Id =2, Name = "BMW"}
-            };
-        }
+
         [Route("cars/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
