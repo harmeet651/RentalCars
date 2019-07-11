@@ -13,6 +13,7 @@ namespace ProjectApp.Controllers
     public class CustomersController : Controller
     {
         // GET: Customers
+        List<Customer> listCustomer = new List<Customer>();
         public ActionResult Index()
         {
             string connectionString = "Data Source=52.189.181.41 ;Initial Catalog=Sample; User ID=sa;Password=Lb@zxc)0";
@@ -26,11 +27,11 @@ namespace ProjectApp.Controllers
                 da.SelectCommand = cmd;
                 da.Fill(ds, "Customer");
                 dt = ds.Tables["Customer"];
-                List<Customer> listCustomer = new List<Customer>(); ;
+                //List<Customer> listCustomer = new List<Customer>();
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString() });
+                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString(), MembershipType = dr["MembershipType"].ToString() });
                 }
                 //var cars = GetCars();
                 return View(listCustomer);
@@ -39,10 +40,28 @@ namespace ProjectApp.Controllers
 
         public ActionResult DisplayName(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
-            if (customer == null)
-                return HttpNotFound();
-            return View(customer);
+            string connectionString = "Data Source=52.189.181.41 ;Initial Catalog=Sample; User ID=sa;Password=Lb@zxc)0";
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("ShowCustomers", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                da.Fill(ds, "Customer");
+                dt = ds.Tables["Customer"];
+                //List<Customer> listCustomer = new List<Customer>();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString(), MembershipType = dr["MembershipType"].ToString() });
+                }
+                var customer = listCustomer.SingleOrDefault(c => c.Id == id);
+                if (customer == null)
+                    return HttpNotFound();
+                return View(customer);
+            }
         }
 
         private IEnumerable<Customer> GetCustomers()

@@ -153,4 +153,3 @@ C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\EntityFramewor
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\EntityFramework.SqlServer.dll
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\EntityFramework.xml
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\EntityFramework.SqlServer.xml
-C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.csprojAssemblyReference.cache

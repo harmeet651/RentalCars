@@ -13,5 +13,6 @@ namespace ProjectApp.Models
         [Required] //not null
         [StringLength(250)]
         public string Name { get; set; }
+        public string MembershipType { get; set; }
     }
 }
