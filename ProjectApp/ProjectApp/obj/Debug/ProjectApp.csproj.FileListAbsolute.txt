@@ -149,3 +149,4 @@ C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectA
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.csproj.CopyComplete
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.dll
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.pdb
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.csprojAssemblyReference.cache
