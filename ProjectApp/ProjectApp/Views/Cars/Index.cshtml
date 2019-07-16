@@ -15,14 +15,18 @@ else
         <thead>
             <tr>
                 <th>Cars List</th>
+                <th>Color</th>
+                <th>Release Year</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var car in Model) 
             {
-                <tr>
-                    <td>@car.Name</td>
-                </tr>
+            <tr>
+                <td>@Html.ActionLink(car.Name, "DisplayName", "Cars", new { id = car.Id }, null)</td>
+                <td>@car.Color</td>
+                <td>@car.ReleaseYear</td>
+            </tr>
             }
         </tbody>
     </table>

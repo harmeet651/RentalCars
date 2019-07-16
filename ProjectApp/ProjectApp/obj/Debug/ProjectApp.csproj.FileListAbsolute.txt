@@ -149,7 +149,3 @@ C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectA
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.csproj.CopyComplete
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.dll
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.pdb
-C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\EntityFramework.dll
-C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\EntityFramework.SqlServer.dll
-C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\EntityFramework.xml
-C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\EntityFramework.SqlServer.xml

@@ -23,7 +23,15 @@ else
             {
             <tr>
                 <td>@Html.ActionLink(customer.Name, "DisplayName", "Customers", new { id = customer.Id }, null)</td>
-                <td>@customer.MembershipType</td>
+                
+                @if (!customer.MembershipType.Any())
+                {
+                    <td>Not a member yet.</td>
+                }
+                else
+                {
+                    <td>@customer.MembershipType</td>
+                }
             </tr>
             }
         </tbody>

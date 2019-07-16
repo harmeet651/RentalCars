@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Configuration;
 
 namespace ProjectApp.Controllers
 {
@@ -16,7 +17,7 @@ namespace ProjectApp.Controllers
         List<Customer> listCustomer = new List<Customer>();
         public ActionResult Index()
         {
-            string connectionString = "Data Source=52.189.181.41 ;Initial Catalog=Sample; User ID=sa;Password=Lb@zxc)0";
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -40,7 +41,7 @@ namespace ProjectApp.Controllers
 
         public ActionResult DisplayName(int id)
         {
-            string connectionString = "Data Source=52.189.181.41 ;Initial Catalog=Sample; User ID=sa;Password=Lb@zxc)0";
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -62,6 +63,20 @@ namespace ProjectApp.Controllers
                     return HttpNotFound();
                 return View(customer);
             }
+        }
+
+        //new User form
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        //to add new User
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            ViewData["Name"] = collection["Name"];
+            return View();
         }
 
         private IEnumerable<Customer> GetCustomers()

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Data;
+using System.Configuration;
 
 namespace ProjectApp.Controllers
 {
@@ -16,7 +17,7 @@ namespace ProjectApp.Controllers
         // GET: Cars
         public ActionResult Index(int? pageIndex, string sortBy)
         {
-            string connectionString = "Data Source=52.189.181.41 ;Initial Catalog=Sample; User ID=sa;Password=Lb@zxc)0";
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -31,10 +32,36 @@ namespace ProjectApp.Controllers
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listCar.Add(new Car { Id = (int)dr["Id"], Name = dr["Name"].ToString() });
+                    listCar.Add(new Car { Id = (int)dr["Id"], Name = dr["Name"].ToString(), Color = dr["Color"].ToString(), ReleaseYear = dr["ReleaseYear"].ToString() });
                 }
                 //var cars = GetCars();
                 return View(listCar);
+            }
+        }
+
+        public ActionResult DisplayName(int id)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("ShowCars", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                da.Fill(ds, "Cars");
+                dt = ds.Tables["Cars"];
+                List<Car> listCar = new List<Car>(); ;
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    listCar.Add(new Car { Id = (int)dr["Id"], Name = dr["Name"].ToString(), Color = dr["Color"].ToString(), ReleaseYear = dr["ReleaseYear"].ToString() });
+                }
+                var car = listCar.SingleOrDefault(c => c.Id == id);
+                if (car == null)
+                    return HttpNotFound();
+                return View(car);
             }
         }
 
