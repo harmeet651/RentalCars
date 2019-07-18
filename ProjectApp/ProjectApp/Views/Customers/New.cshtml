@@ -1,7 +1,9 @@
 ﻿@model ProjectApp.Models.Customer
 @{
-    ViewBag.Title = "New";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "New";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>New Customer</h2>
@@ -10,12 +12,9 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
     </div>
-    <div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(m => m.IsSubscribedToNewsLetter) Subscribed to NewsLetter?
-        </label>
-    </div>
+
     <div class="form-group">
         @Html.LabelFor(m => m.MembershipTypeId)
         @Html.DropDownListFor(m => m.MembershipTypeId, new SelectList(new List<Object>{
@@ -24,6 +23,37 @@
                        new { value = 3 , text = "Yearly"}
                     },"value","text"),
                    new { @class = "form-control" })
+        @Html.HiddenFor(m => m.MembershipType)
     </div>
+
+        @*<scripts>
+            $('#MembershipTypeId').on('change', function () {
+            var selectedIndex = $(this).val();
+
+                $.ajax({
+                    url: '/Customers/New',
+                    data: { MemberShipType: selectedIndex },
+                    method: 'GET',
+                    success: function (result) {
+                    $('MembershipType').val(result);
+                    }
+                });
+            });
+        </scripts>*@
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.IsSubscribedToNewsLetter) Subscribed to NewsLetter?
+        </label>
+    </div>
+
+    //To save save from cross-site scriptig attack
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@*for client-side-validation, saves round trip to server, works with standard data annotations only, not custom*@
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }

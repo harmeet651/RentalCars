@@ -73,8 +73,13 @@ namespace ProjectApp.Controllers
 
         //to Add new User
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Customer customer)
         {
+            if(!ModelState.IsValid)
+            {
+                return View("New", customer);
+            }
             string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();

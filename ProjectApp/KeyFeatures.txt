@@ -1,0 +1,3 @@
+1. Prevention from Crosssite scripting attack using tokens.
+2. Client side validation, to save resources, a round trip to server, although server-side validation is also there.
+3. Prevention from Sql Injection attack using stored procedures.
