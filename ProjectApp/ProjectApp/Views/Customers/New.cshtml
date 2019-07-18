@@ -26,21 +26,6 @@
         @Html.HiddenFor(m => m.MembershipType)
     </div>
 
-        @*<scripts>
-            $('#MembershipTypeId').on('change', function () {
-            var selectedIndex = $(this).val();
-
-                $.ajax({
-                    url: '/Customers/New',
-                    data: { MemberShipType: selectedIndex },
-                    method: 'GET',
-                    success: function (result) {
-                    $('MembershipType').val(result);
-                    }
-                });
-            });
-        </scripts>*@
-
     <div class="checkbox">
         <label>
             @Html.CheckBoxFor(m => m.IsSubscribedToNewsLetter) Subscribed to NewsLetter?

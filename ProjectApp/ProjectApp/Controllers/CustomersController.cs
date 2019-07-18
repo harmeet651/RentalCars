@@ -76,20 +76,55 @@ namespace ProjectApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Customer customer)
         {
-            if(!ModelState.IsValid)
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+
+            //checking if model is Valid
+            if (!ModelState.IsValid)
             {
                 return View("New", customer);
             }
-            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
+            //end
+
+            // for assigning correct MembershipType according to MembershipTypeId
+            if (customer.MembershipTypeId == 1)
+            {
+                customer.MembershipType = "Monthly";
+            }
+            else if(customer.MembershipTypeId == 1)
+            {
+                customer.MembershipType = "Quaterly";
+            }
+            else
+            {
+                customer.MembershipType = "Yearly";
+            }
+            //end
+
+            //getting count of customers to Assign if for new customer
+            int count = 0;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("CountCustomers", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                DataSet d = new DataSet();
+                da.Fill(d);
+                con.Open();
+                DataTable dt = new DataTable();
+                dt = d.Tables["Table"];
+                DataRow dr;
+                dr = dt.Rows[0];
+                count = (int)dr.ItemArray[0];
+            }
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("InsertCustomer", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = 6;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = count+1;
                 cmd.Parameters.Add("@Name", SqlDbType.VarChar, 250).Value = customer.Name;
-                cmd.Parameters.Add("@MembershipType", SqlDbType.VarChar, 250).Value = "Monthly";
+                cmd.Parameters.Add("@MembershipType", SqlDbType.VarChar, 250).Value = customer.MembershipType;
                 cmd.Parameters.Add("@MembershipTypeId", SqlDbType.Int).Value = customer.MembershipTypeId;
                 cmd.Parameters.Add("@IsSubscribedToNewsLetter", SqlDbType.Bit).Value = customer.IsSubscribedToNewsLetter;
                 con.Open();
