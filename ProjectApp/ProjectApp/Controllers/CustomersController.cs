@@ -71,12 +71,26 @@ namespace ProjectApp.Controllers
             return View();
         }
 
-        //to add new User
+        //to Add new User
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Customer customer)
         {
-            ViewData["Name"] = collection["Name"];
-            return View();
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("InsertCustomer", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = 6;
+                cmd.Parameters.Add("@Name", SqlDbType.VarChar, 250).Value = customer.Name;
+                cmd.Parameters.Add("@MembershipType", SqlDbType.VarChar, 250).Value = "Monthly";
+                cmd.Parameters.Add("@MembershipTypeId", SqlDbType.Int).Value = customer.MembershipTypeId;
+                cmd.Parameters.Add("@IsSubscribedToNewsLetter", SqlDbType.Bit).Value = customer.IsSubscribedToNewsLetter;
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            return RedirectToAction("Index", "Customers");
         }
 
         private IEnumerable<Customer> GetCustomers()
