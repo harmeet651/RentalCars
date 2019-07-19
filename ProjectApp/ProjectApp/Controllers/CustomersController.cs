@@ -15,6 +15,7 @@ namespace ProjectApp.Controllers
     {
         // GET: Customers
         List<Customer> listCustomer = new List<Customer>();
+
         public ActionResult Index()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;

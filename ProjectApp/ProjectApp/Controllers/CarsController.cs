@@ -15,6 +15,7 @@ namespace ProjectApp.Controllers
     public class CarsController : Controller
     {
         // GET: Cars
+
         public ActionResult Index(int? pageIndex, string sortBy)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
