@@ -11,7 +11,7 @@
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" id="customers">
         <thead>
             <tr>
                 <th>Customers List</th>
@@ -36,4 +36,12 @@ else
             }
         </tbody>
     </table>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#customers").DataTable();
+        });
+    </script>    
 }
