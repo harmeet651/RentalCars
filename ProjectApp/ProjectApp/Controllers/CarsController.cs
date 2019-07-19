@@ -18,6 +18,10 @@ namespace ProjectApp.Controllers
         public ActionResult Index(int? pageIndex, string sortBy)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+
+            System.Net.WebClient wc = new System.Net.WebClient();
+            var jsonResponse = wc.DownloadString("https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=jsonApiUrl"); // you need to parse your json 
+            //dynamic Data = Json.Decode(jsonResponse);
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
