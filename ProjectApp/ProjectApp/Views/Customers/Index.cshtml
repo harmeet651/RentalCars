@@ -19,6 +19,7 @@ else
                 <th>MembershipType List</th>
                 <th>Owns</th>
                 <th>Add/Update Car</th>
+                <th>Delete Customer</th>
             </tr>
         </thead>
         <tbody>
@@ -52,6 +53,15 @@ else
                             @Html.DropDownListFor(m => customer.Owns, new SelectList(Model.ListCars, "Name", "Name"), "",
                             new { @class = "form-control" })
                             <button type="submit" class="btn btn-primary">Save</button>
+                        }
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        @using (Html.BeginForm("DeleteCustomer", "Customers"))
+                        {
+                            @Html.HiddenFor(m => customer.Id)
+                            <button type="submit" class="btn btn-secondary">Delete</button>
                         }
                     </div>
                 </td>

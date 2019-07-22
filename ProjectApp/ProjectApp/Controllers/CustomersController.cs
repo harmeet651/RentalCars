@@ -109,7 +109,7 @@ namespace ProjectApp.Controllers
             {
                 customer.MembershipType = "Monthly";
             }
-            else if(customer.MembershipTypeId == 1)
+            else if(customer.MembershipTypeId == 2)
             {
                 customer.MembershipType = "Quaterly";
             }
@@ -163,6 +163,21 @@ namespace ProjectApp.Controllers
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = customer.Id;
                 cmd.Parameters.Add("@Name", SqlDbType.VarChar, 250).Value = customer.Owns;
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            return RedirectToAction("Index", "Customers");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCustomer(Customer customer)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("DeleteCustomer", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = customer.Id;
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
