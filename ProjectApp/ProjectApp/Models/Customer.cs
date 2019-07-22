@@ -20,5 +20,7 @@ namespace ProjectApp.Models
         public int MembershipTypeId { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
+
+        public String Owns { get; set; }
     }
 }

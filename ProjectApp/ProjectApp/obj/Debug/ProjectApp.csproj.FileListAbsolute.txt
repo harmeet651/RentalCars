@@ -149,4 +149,16 @@ C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectA
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.csproj.CopyComplete
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.dll
 C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.pdb
-C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\obj\Debug\ProjectApp.csprojAssemblyReference.cache
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.Owin.dll
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.Owin.Security.dll
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Owin.dll
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.Owin.xml
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.Owin.Security.xml
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\hsingh\source\repos\RentalCars\ProjectApp\ProjectApp\bin\Microsoft.Owin.Security.OAuth.xml

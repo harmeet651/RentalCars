@@ -15,3 +15,12 @@
             <li><h5>@Model.MembershipType</h5></li>
         </ul>
     }
+
+    @if (!Model.Owns.Any())
+    {
+        <td>..No Car..</td>
+    }
+    else
+    {
+        <td>@Model.Owns</td>
+    }

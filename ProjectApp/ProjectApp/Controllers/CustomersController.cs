@@ -29,14 +29,32 @@ namespace ProjectApp.Controllers
                 da.SelectCommand = cmd;
                 da.Fill(ds, "Customer");
                 dt = ds.Tables["Customer"];
-                //List<Customer> listCustomer = new List<Customer>();
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString(), MembershipType = dr["MembershipType"].ToString() });
+                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString(), MembershipType = dr["MembershipType"].ToString(), Owns = dr["Owns"].ToString() });
                 }
-                //var cars = GetCars();
-                return View(listCustomer);
+
+                DataSet ds2 = new DataSet();
+                DataTable dt2 = new DataTable();
+                using (SqlConnection con2 = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd2 = new SqlCommand("ShowCars", con2);
+                    cmd2.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlDataAdapter da2 = new SqlDataAdapter();
+                    da2.SelectCommand = cmd2;
+                    da2.Fill(ds2, "Cars");
+                    dt2 = ds2.Tables["Cars"];
+                    List<Car> listCar = new List<Car>(); ;
+
+                    foreach (DataRow dr2 in dt2.Rows)
+                    {
+                        listCar.Add(new Car { Id = (int)dr2["Id"], Name = dr2["Name"].ToString(), Color = dr2["Color"].ToString(), ReleaseYear = dr2["ReleaseYear"].ToString() });
+                    }
+
+                    var modelNew = new CustomerListAndItself { ListCars = listCar, ListCustomers = listCustomer };
+                    return View(modelNew);
+                }
             }
         }
 
@@ -57,7 +75,7 @@ namespace ProjectApp.Controllers
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString(), MembershipType = dr["MembershipType"].ToString() });
+                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString(), MembershipType = dr["MembershipType"].ToString(), Owns = dr["Owns"].ToString() });
                 }
                 var customer = listCustomer.SingleOrDefault(c => c.Id == id);
                 if (customer == null)
@@ -128,6 +146,22 @@ namespace ProjectApp.Controllers
                 cmd.Parameters.Add("@MembershipType", SqlDbType.VarChar, 250).Value = customer.MembershipType;
                 cmd.Parameters.Add("@MembershipTypeId", SqlDbType.Int).Value = customer.MembershipTypeId;
                 cmd.Parameters.Add("@IsSubscribedToNewsLetter", SqlDbType.Bit).Value = customer.IsSubscribedToNewsLetter;
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            return RedirectToAction("Index", "Customers");
+        }
+
+        [HttpPost]
+        public ActionResult AddNewCarToThisCustomer(Customer customer)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddNewcarToThisCustomer", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = customer.Id;
+                cmd.Parameters.Add("@Name", SqlDbType.VarChar, 250).Value = customer.Owns;
                 con.Open();
                 cmd.ExecuteNonQuery();
             }

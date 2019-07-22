@@ -1,11 +1,12 @@
-﻿@model IEnumerable<ProjectApp.Models.Customer>
+﻿@*@model IEnumerable<ProjectApp.Models.Customer>*@
+@model ProjectApp.ViewModels.CustomerListAndItself
 @{
     ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Customers</h2>
-@if (!Model.Any())
+@if (!Model.ListCustomers.Any())
 {
     <p>We don't have any customers yet.</p>
 }
@@ -16,14 +17,16 @@ else
             <tr>
                 <th>Customers List</th>
                 <th>MembershipType List</th>
+                <th>Owns</th>
+                <th>Add/Update Car</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var customer in Model)
+            @foreach (var customer in Model.ListCustomers)
             {
             <tr>
                 <td>@Html.ActionLink(customer.Name, "DisplayName", "Customers", new { id = customer.Id }, null)</td>
-                
+
                 @if (!customer.MembershipType.Any())
                 {
                     <td>Not a member yet.</td>
@@ -32,6 +35,26 @@ else
                 {
                     <td>@customer.MembershipType</td>
                 }
+
+                @if (!customer.Owns.Any())
+                {
+                    <td>..No Car..</td>
+                }
+                else
+                {
+                    <td>@customer.Owns</td>
+                }
+                <td>
+                    <div class="form-group">
+                        @using (Html.BeginForm("AddNewCarToThisCustomer", "Customers"))
+                        {
+                            @Html.HiddenFor(m => customer.Id)
+                            @Html.DropDownListFor(m => customer.Owns, new SelectList(Model.ListCars, "Name", "Name"), "",
+                            new { @class = "form-control" })
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        }
+                    </div>
+                </td>
             </tr>
             }
         </tbody>
@@ -43,5 +66,5 @@ else
         $(document).ready(function () {
             $("#customers").DataTable();
         });
-    </script>    
+    </script>
 }
