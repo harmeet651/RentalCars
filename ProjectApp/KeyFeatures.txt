@@ -1,5 +1,11 @@
+KeyPoints
 1. Prevention from Crosssite scripting attack using tokens.
 2. Client side validation, to save resources, a round trip to server, although server-side validation is also there.
 3. Prevention from Sql Injection attack using stored procedures.
-4. Added jquery DataTables
-5. Ado .net used
+4. Added jquery DataTables.
+5. Ado .net used, entinity framework slow with complex queries, so we write stored procedures.
+6. RequireHttps attribute, secure channel.
+
+
+LearnedAbout
+1.OutputCache, for slow pages use it, can give duration time to refresh and vary parameters.
