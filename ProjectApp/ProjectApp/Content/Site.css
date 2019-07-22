@@ -32,3 +32,21 @@ textarea {
     border : 2px solid red;
 }
 
+#car img {
+    position: absolute;
+    top: 68%;
+    left: 1%;
+    width: 280px;
+    height: 230px;
+    animation-name: windBlow;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+    background-repeat : repeat-x;
+}
+
+@keyframes windBlow {
+    100% {
+        transform : translateX(5400px);
+    }
+}
+

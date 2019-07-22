@@ -18,9 +18,13 @@
 
     @if (!Model.Owns.Any())
     {
-        <td>..No Car..</td>
+        <ul>
+            <li><h5>..No Car..</h5></li>
+        </ul>
     }
     else
     {
-        <td>@Model.Owns</td>
+        <ul>
+            <li><h5>@Model.Owns</h5></li>
+        </ul>
     }
