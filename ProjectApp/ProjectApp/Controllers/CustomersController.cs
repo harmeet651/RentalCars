@@ -146,6 +146,7 @@ namespace ProjectApp.Controllers
                 cmd.Parameters.Add("@MembershipType", SqlDbType.VarChar, 250).Value = customer.MembershipType;
                 cmd.Parameters.Add("@MembershipTypeId", SqlDbType.Int).Value = customer.MembershipTypeId;
                 cmd.Parameters.Add("@IsSubscribedToNewsLetter", SqlDbType.Bit).Value = customer.IsSubscribedToNewsLetter;
+                cmd.Parameters.Add("@Owns", SqlDbType.VarChar, 250).Value = "..No Car..";
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
