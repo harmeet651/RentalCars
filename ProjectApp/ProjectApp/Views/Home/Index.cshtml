@@ -2,11 +2,12 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Rental Cars</h1>
-    <h5>Welcome Mr Manager!!</h5>
-    <h5>You can <b>ADD</b> new customers from the <b>BUTTON</b> below or <b>UPDATE</b> their cars through the <b>CUSTOMERS</b> link in the menu above.</h5>
-    <button class="btn btn-secondary btn-lg">@Html.ActionLink("Add New Customer", "New", "Customers", new { area = "" }, new { @class = "navbar-brand" })</button>
+<div class="Homepage">
+    <div id="ContentOfMain">
+        <h1>Rental Cars</h1>
+        <button class="btn btn-secondary btn-lg">@Html.ActionLink("Add Customer", "New", "Customers", new { area = "" }, new { @class = "navbar-brand" })</button>
+        <button class="btn btn-secondary btn-lg">@Html.ActionLink("Update Customer", "Index", "Customers", new { area = "" }, new { @class = "navbar-brand" })</button>
+    </div>
     <body background="~/Images/b.jpg">
         <div id="car">
             <img src="~/Images/car.png" alt="Sample Image" />
