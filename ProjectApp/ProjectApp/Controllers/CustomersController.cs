@@ -119,7 +119,7 @@ namespace ProjectApp.Controllers
             }
             //end
 
-            //getting count of customers to Assign if for new customer
+            //getting count of customers to Assign it for new customer
             int count = 0;
             using (SqlConnection con = new SqlConnection(connectionString))
             {

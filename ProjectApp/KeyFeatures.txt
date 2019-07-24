@@ -3,7 +3,7 @@ KeyPoints
 2. Client side validation, to save resources, a round trip to server, although server-side validation is also there.
 3. Prevention from Sql Injection attack using stored procedures.
 4. Added jquery DataTables.
-5. Ado .net used, entinity framework slow with complex queries, so we write stored procedures.
+5. Ado .net used (connected architecture, dataset), entinity framework slow with complex queries, so we write stored procedures.
 6. RequireHttps attribute, secure channel.
 
 

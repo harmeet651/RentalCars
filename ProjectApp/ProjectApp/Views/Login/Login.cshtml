@@ -1,0 +1,34 @@
+﻿@model ProjectApp.Models.Login
+@{
+                /**/
+
+                ViewBag.Title = "Login";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm("Post", "Login", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.id)
+        @Html.TextBoxFor(m => m.id, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(m => m.id)*@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.password)
+        @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(m => m.password)*@
+    </div>
+
+    //To save save from cross-site scriptig attack
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Login</button>
+}
+
+@*for client-side-validation, saves round trip to server, works with standard data annotations only, not custom*@
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

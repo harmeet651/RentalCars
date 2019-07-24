@@ -12,7 +12,6 @@
 else
 {
     <ul>
-        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        @Html.ActionLink("Log In", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
     </ul>
 }
