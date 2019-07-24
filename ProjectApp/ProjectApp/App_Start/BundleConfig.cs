@@ -32,8 +32,12 @@ namespace ProjectApp
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
-                      "~/Content/datatables/css/datatables.bootstrap4.css",
+                      //"~/Content/bootstrap-lumen.css",
+                      "~/assets/css/bootstrap.min.css",
+                      "~/assets/css/colors.css",
+                      "~/assets/css/responsive.css",
+                      "~/assets/css/style.css",
+                      //"~/Content/datatables/css/datatables.bootstrap4.css",
                       "~/Content/site.css"));
         }
     }
