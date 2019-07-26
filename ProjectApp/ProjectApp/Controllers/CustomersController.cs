@@ -75,7 +75,7 @@ namespace ProjectApp.Controllers
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString(), MembershipType = dr["MembershipType"].ToString(), Owns = dr["Owns"].ToString() });
+                    listCustomer.Add(new Customer { Id = (int)dr["Id"], Name = dr["Name"].ToString(), MembershipType = dr["MembershipType"].ToString(), Owns = dr["Owns"].ToString(), IsSubscribedToNewsLetter = (dr["IsSubscribedToNewsLetter"] == "0") ? false: true });
                 }
                 var customer = listCustomer.SingleOrDefault(c => c.Id == id);
                 if (customer == null)

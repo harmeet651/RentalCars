@@ -60,3 +60,11 @@ textarea {
     vertical-align: middle;
     text-align: center;
 }
+
+.form-control {
+    border-style: outset;
+}
+
+#SaveId,#DelId {
+    border-radius: 10px;
+}

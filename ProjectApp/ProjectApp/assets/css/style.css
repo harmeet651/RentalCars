@@ -199,7 +199,6 @@ input[type=search] + button:focus {
 input[type=checkbox],
 input[type=radio] {
     position: absolute;
-    visibility: hidden;
     height: auto;
     margin-top: 0;
 }

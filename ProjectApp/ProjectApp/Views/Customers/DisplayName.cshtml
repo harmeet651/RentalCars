@@ -15,6 +15,9 @@
             <li><h5>@Model.MembershipType</h5></li>
         </ul>
     }
+    <ul>
+        <li><h5>Is subscribed to NewsLetter: @Model.IsSubscribedToNewsLetter</h5></li>
+    </ul>
 
     @if (!Model.Owns.Any())
     {

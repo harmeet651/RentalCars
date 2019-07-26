@@ -52,7 +52,7 @@ else
                             @Html.HiddenFor(m => customer.Id)
                             @Html.DropDownListFor(m => customer.Owns, new SelectList(Model.ListCars, "Name", "Name"), "",
                             new { @class = "form-control" })
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary" id="SaveId">Save</button>
                         }
                     </div>
                 </td>
@@ -61,7 +61,7 @@ else
                         @using (Html.BeginForm("DeleteCustomer", "Customers"))
                         {
                             @Html.HiddenFor(m => customer.Id)
-                            <button type="submit" class="btn btn-secondary">Delete</button>
+                            <button type="submit" class="btn btn-secondary" id="DelId">Delete</button>
                         }
                     </div>
                 </td>
